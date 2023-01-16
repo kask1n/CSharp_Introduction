@@ -1,37 +1,13 @@
 ﻿/*
-Задача №5. Напишите программу, которая на вход принимает одно число (N), а на выходе показывает все целые числа в промежутке от -N до N.
-4 -> "-4, -3, -2, -1, 0, 1, 2, 3, 4" 
-2 -> " -2, -1, 0, 1, 2"
+Задача №7. Напишите программу, которая принимает на вход трёхзначное число,
+а на выходе показывает последнюю цифру этого числа.
+456 -> 6
+782 -> 2
+918 -> 8
 */
 
 Console.WriteLine("Введите число");
 string numberStr = Console.ReadLine(); // 22 -> "22"
 int number = Convert.ToInt32(numberStr); // 22
-
-for (int i = -number; i <= number; i++)
-{
-  if (i < number)
-  {
-    Console.Write(i + "! ");
-  }
-  else
-  {
-    Console.Write(i);
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-Console.WriteLine("Введите число");
-string number = Console.ReadLine();
-int a = Convert.ToInt32(number);
-int b = a % 10;
-Console.WriteLine(b);
+int result = number % 10;
+Console.WriteLine($"Последней цифрой числа {number} является цифра {result}");
