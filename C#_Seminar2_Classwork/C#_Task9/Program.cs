@@ -26,7 +26,7 @@ int GetRandomNumber(int leftBound, int rightBound)
 // 2. Метод, который получает максимальную цифру числа
 int GetMaxDigitOfNumber(int number)
 {
-  int firstDigit = number / 10; // 96 / 10 =9,6
+  int firstDigit = number / 10; // 96 / 10 = 9,6 (округляется в меньшую сторону)
   int secondDigit = number % 10;
   if (firstDigit > secondDigit)
     return firstDigit;

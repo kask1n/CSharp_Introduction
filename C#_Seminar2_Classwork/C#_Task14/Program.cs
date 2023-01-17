@@ -5,7 +5,7 @@
 5, 25  ->  да
 -4, 16  ->  да
 25, 5  ->  да
-8,9  ->  нет
+8, 9  ->  нет
 */
 
 int GetNumber()
@@ -18,11 +18,15 @@ int GetNumber()
 int num1 = GetNumber();
 int num2 = GetNumber();
 
-if (num1 == num2 * num2 || num2 == num1 * num1)
+if (num1 == num2 * num2)
 {
-  Console.WriteLine($"{num1}, {num2} -> Да");
+  Console.WriteLine($"Да, число {num1} является квадратом числа {num2}");
+}
+else if (num2 == num1 * num1)
+{
+  Console.WriteLine($"Да, число {num2} является квадратом числа {num1}");
 }
 else
 {
-  Console.WriteLine($"{num1}, {num2} -> Нет");
+  Console.WriteLine($"Ни одно из введённых чисел не является квадратом другого");
 }

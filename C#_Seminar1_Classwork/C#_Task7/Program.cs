@@ -11,3 +11,7 @@ string numberStr = Console.ReadLine(); // 22 -> "22"
 int number = Convert.ToInt32(numberStr); // 22
 int result = number % 10;
 Console.WriteLine($"Последней цифрой числа {number} является цифра {result}");
+
+// string temp = "abc";
+// char[] tempArray = new char[] { 'a', 'b', 'c' };
+// char lastSymbol = temp[-1];

@@ -15,6 +15,6 @@ int DeleteSecondDigit(int number)
   return (number / 100) * 10 + (number % 10);
 }
 
-int number = GetRandomValue();
-int result = DeleteSecondDigit(number);
-Console.WriteLine($"Было {number}, стало {result}");
+int num = GetRandomValue();
+int result = DeleteSecondDigit(num);
+Console.WriteLine($"Было {num}, стало {result}");
