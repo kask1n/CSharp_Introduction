@@ -9,7 +9,7 @@
 Console.WriteLine();
 Console.Write("Проверка на чётность. Введите число: ");
 string numberStr = Console.ReadLine(); // 22 -> "22"
-int number = Convert.ToInt32(numberStr); // 22
+double number = Convert.ToDouble(numberStr); // 22
 Console.WriteLine();
 
 if (number % 2 ==0)
