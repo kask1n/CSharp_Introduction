@@ -6,8 +6,25 @@ a = 2 b = 10 -> max = 10
 a = -9 b = -3 -> max = -3
 */
 
-Console.WriteLine("Введите число");
-string numberStr = Console.ReadLine(); // 22 -> "22"
-int number = Convert.ToInt32(numberStr); // 22
-int result = number % 10;
-Console.WriteLine($"Последней цифрой числа {number} является цифра {result}");
+Console.Write("Введите первое число: ");
+string aStr = Console.ReadLine(); // 22 -> "22"
+double a = Convert.ToDouble(aStr); // 22
+
+Console.Write("Введите второе число: ");
+string bStr = Console.ReadLine(); // 22 -> "22"
+double b = Convert.ToDouble(bStr); // 22
+
+Console.WriteLine();
+
+if (a > b)
+{
+  Console.WriteLine($"-> max = {a}");
+}
+else if (a == b)
+{
+  Console.WriteLine($"-> Числа равны, max = {a}");
+}
+else
+{
+  Console.WriteLine($"-> max = {b}");
+}

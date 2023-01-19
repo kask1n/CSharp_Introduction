@@ -6,8 +6,39 @@
 22 3 9 -> 22
 */
 
-Console.WriteLine("Введите число");
-string numberStr = Console.ReadLine(); // 22 -> "22"
-int number = Convert.ToInt32(numberStr); // 22
-int result = number % 10;
-Console.WriteLine($"Последней цифрой числа {number} является цифра {result}");
+Console.WriteLine();
+Console.Write($"Укажите количество чисел для сравнения: ");
+string quantityStr = Console.ReadLine(); // 22 -> "22"
+int quantity = Convert.ToInt32(quantityStr); // 22
+
+if (quantity < 2)
+{
+  Console.WriteLine();
+  Console.WriteLine($"Количество чисел для сравнения должно быть 2 или более");
+}
+
+else
+{
+  double[] numbers = new double[quantity];
+  Console.WriteLine();
+  
+  for (int i = 0; i < quantity; i++)
+  {
+    Console.Write($"Введите число {i + 1}: ");
+    string numsStr = Console.ReadLine(); // 22 -> "22"
+    numbers[i] = Convert.ToDouble(numsStr); // 22
+  }
+  
+  Console.WriteLine();
+  double max = numbers[0];
+  
+  for (int i = 1; i < quantity; i++)
+  {
+    if (numbers[i] > numbers[0])
+    {
+      max = numbers[i];
+    }
+  }
+  
+  Console.WriteLine($"-> max = {max}");
+}

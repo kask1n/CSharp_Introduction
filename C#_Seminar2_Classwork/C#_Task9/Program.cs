@@ -18,7 +18,6 @@ int GetRandomNumber(int leftBound, int rightBound)
 {
   int result = 0;
   Random rnd = new Random();
-
   result = rnd.Next(leftBound, rightBound + 1); // [leftBound, rightBound)
   return result;
 }

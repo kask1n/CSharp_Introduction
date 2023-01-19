@@ -5,8 +5,44 @@
 8 -> 2, 4, 6, 8
 */
 
-Console.WriteLine("Введите число");
+Console.WriteLine();
+Console.WriteLine("Программа для отображения всех чётных чисел от 1 до N.");
+Console.Write("Введите число: ");
 string numberStr = Console.ReadLine(); // 22 -> "22"
 int number = Convert.ToInt32(numberStr); // 22
-int result = number % 10;
-Console.WriteLine($"Последней цифрой числа {number} является цифра {result}");
+Console.WriteLine();
+
+if (number > 1)
+{
+  for (int i = 2; i <= number; i = i + 2)
+  {
+    if (i < number - 1)
+    {
+      Console.Write(i + ", ");
+    }
+    else
+    {
+      Console.Write(i);
+    }
+  }
+}
+else if (number < 1)
+{
+  for (int i = 0; i >= number; i = i - 2)
+  {
+    if (i > number + 1)
+    {
+      Console.Write(i + ", ");
+    }
+    else
+    {
+      Console.Write(i);
+    }
+  }
+}
+else
+{
+  Console.WriteLine("В указанном диапазоне отсутствуют чётные числа.");
+}
+
+Console.WriteLine();

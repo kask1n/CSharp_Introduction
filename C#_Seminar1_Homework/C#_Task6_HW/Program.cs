@@ -6,8 +6,17 @@
 7 -> нет
 */
 
-Console.WriteLine("Введите число");
+Console.WriteLine();
+Console.Write("Проверка на чётность. Введите число: ");
 string numberStr = Console.ReadLine(); // 22 -> "22"
 int number = Convert.ToInt32(numberStr); // 22
-int result = number % 10;
-Console.WriteLine($"Последней цифрой числа {number} является цифра {result}");
+Console.WriteLine();
+
+if (number % 2 ==0)
+{
+  Console.WriteLine($"-> Да");
+}
+else
+{
+  Console.WriteLine($"-> Нет");
+}
