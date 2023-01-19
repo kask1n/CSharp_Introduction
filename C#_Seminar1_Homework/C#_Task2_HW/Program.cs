@@ -6,6 +6,7 @@ a = 2 b = 10 -> max = 10
 a = -9 b = -3 -> max = -3
 */
 
+Console.WriteLine();
 Console.Write("Введите первое число: ");
 string aStr = Console.ReadLine(); // 22 -> "22"
 double a = Convert.ToDouble(aStr); // 22
