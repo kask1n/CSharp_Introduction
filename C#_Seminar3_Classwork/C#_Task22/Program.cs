@@ -5,12 +5,25 @@
 2 -> 1, 4
 */
 
-int GetNumber() // Функция, принимающая число (в т.ч. отрицательное).
+int GetNumber()
 {
-  Console.Write("Введите число: ");
-  int number = Convert.ToInt32(Console.ReadLine());
-  number = Math.Abs(number);
-  return number;
+  Console.WriteLine();
+  int result = 0;
+
+  while (true)
+  {
+    Console.WriteLine("Введите натуральное число:");
+
+    if (int.TryParse(Console.ReadLine(), out result) && result >= 1)
+    {
+      break;
+    }
+    else
+    {
+      Console.WriteLine("Ввели не число или некорректное число. Повторите ввод!\n");
+    }
+  }
+  return result;
 }
 
 int num = GetNumber();
