@@ -7,43 +7,74 @@
 23432 -> да
 */
 
-Console.WriteLine();
-
-int GetNumber() // Функция, принимающая число (в т.ч. отрицательное).
+int GetNumber() // Функция, принимающая целое пятизначное число с проверкой, в т.ч. отрицательное.
 {
-  Console.Write("Введите число: ");
-  int number = Convert.ToInt32(Console.ReadLine());
-  number = Math.Abs(number);
-  return number;
+  Console.WriteLine();
+  int result = 0;
+
+  while (true)
+  {
+    Console.Write("Введите целое пятизначное число: ");
+
+    if (int.TryParse(Console.ReadLine(), out result))
+    {
+      result = Math.Abs(result);
+
+      if (result >= 10000 && result < 100000)
+      {
+        break;
+      }
+      else
+      {
+        Console.WriteLine("Ввели не пятизначное число. Повторите ввод!\n");
+      }
+    }
+    else
+    {
+      Console.WriteLine("Ввели не число или нецелое число. Повторите ввод!\n");
+    }
+  }
+  return result;
 }
 
-int ShowThirdDigit(int a) // Функция, которая выводит третью цифру заданного числа или сообщает о её отсутствии.
+void isPalindrome(int numberOfFive)
 {
-  if (a >= 1000)
+  if (numberOfFive / 10000 == numberOfFive % 10 && (numberOfFive / 1000) % 10 == (numberOfFive / 10) % 10)
   {
-    return (a - a / 1000 * 1000) / 100;
+    Console.WriteLine("-> Да, это палиндром."); 
   }
-
-  else if (a >= 100)
-  {
-    return a / 100;
-  }
-
   else
   {
-    return -1;
+    Console.WriteLine("-> Нет, НЕ является палиндромом.");
   }
 }
 
 int num = GetNumber();
-int result = ShowThirdDigit(num);
+isPalindrome(num);
 
-if (result == -1)
-{
-  Console.WriteLine("-> Третьей цифры нет.");
-}
 
-else
-{
-  Console.WriteLine($"-> Третьей цифрой заданного числа является {result}.");
-}
+// The example displays the following output:
+
+// Введите целое пятизначное число: -100000
+// Ввели не пятизначное число. Повторите ввод!
+
+// Введите целое пятизначное число: -9999
+// Ввели не пятизначное число. Повторите ввод!
+
+// Введите целое пятизначное число: 100000
+// Ввели не пятизначное число. Повторите ввод!
+
+// Введите целое пятизначное число: 9999
+// Ввели не пятизначное число. Повторите ввод!
+
+// Введите целое пятизначное число: 99999,9
+// Ввели не число или нецелое число. Повторите ввод!
+
+// Введите целое пятизначное число: fad2 
+// Ввели не число или нецелое число. Повторите ввод!
+
+// Введите целое пятизначное число: 39393
+// -> Да, это палиндром.
+
+// Введите целое пятизначное число: 13444
+// -> Нет, НЕ является палиндромом.

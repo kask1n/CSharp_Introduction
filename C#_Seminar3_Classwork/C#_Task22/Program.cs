@@ -36,6 +36,6 @@ for (int i = 1; i <= num; i++)
   }
   else
   {
-    Console.Write(i * i);
+    Console.Write($"{i * i}\n");
   }
 }
