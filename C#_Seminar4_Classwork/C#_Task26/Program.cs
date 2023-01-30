@@ -11,33 +11,31 @@
 
 int GetNumber(string message)
 {
-  Console.WriteLine(message);
   int result = 0;
 
   while (true)
   {
+    Console.WriteLine(message);
+
     if (int.TryParse(Console.ReadLine(), out result))
     {
       break;
     }
     else
     {
-      Console.WriteLine("Ввели не число. Повторите ввод!");
+      Console.WriteLine("Ввели не число или некорректное число. Повторите ввод!\n");
     }
   }
-  return result;
+  return Math.Abs(result);
 }
 
-// int GetSumm(int number)
-// {
-//   int sum = 0;
-//   for (int i = 1; i <= number; i++)
-//   {
-//     sum += i;
-//   }
-//   return sum;
-// }
+void GetLongAndPrint(int number)
+{
+  string text = number.ToString();
+  int longText = text.Length;
+  Console.WriteLine(longText);
+}
 
-int number = GetNumber("Введите число больше 1: ");
-// int sum = GetSumm(number);
-Console.WriteLine(number);
+Console.WriteLine();
+int number = GetNumber("Введите целое число: ");
+GetLongAndPrint(number);

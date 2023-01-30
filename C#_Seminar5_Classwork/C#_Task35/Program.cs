@@ -35,6 +35,6 @@ Console.WriteLine();
 int[] array = InitArray(10);
 int count = FindCount(array);
 
-Console.WriteLine(string.Join(", ", array));
+Console.WriteLine($"Массив: [{string.Join(", ", array)}]");
 
 Console.WriteLine($"-> Количество двухзначных чисел в указанном массиве: {count}");

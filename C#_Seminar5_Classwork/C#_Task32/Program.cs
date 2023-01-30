@@ -34,9 +34,9 @@ void ConvertArray(int[] arr)
 Console.WriteLine();
 
 int[] array = InitArray(4);
-Console.WriteLine(string.Join(", ", array));
+Console.Write($"[{string.Join(", ", array)}]");
 
-Console.WriteLine("->");
+Console.Write(" -> ");
 
 ConvertArray(array);
-Console.WriteLine(string.Join(", ", array));
+Console.Write($"[{string.Join(", ", array)}]\n");

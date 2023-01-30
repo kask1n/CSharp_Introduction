@@ -42,11 +42,10 @@ int[] MultiOfNumbers(int[] arr)
 }
 
 Console.WriteLine();
-
 int[] array = InitArray(9);
-Console.WriteLine(string.Join(", ", array));
+Console.Write($"[{string.Join(", ", array)}]");
 
-Console.WriteLine("-> ");
+Console.Write(" -> ");
 
 int[] multiArray = MultiOfNumbers(array);
-Console.WriteLine(string.Join(", ", multiArray));
+Console.Write($"[{string.Join(", ", multiArray)}]\n");

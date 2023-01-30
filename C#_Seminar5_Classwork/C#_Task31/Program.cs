@@ -2,7 +2,7 @@
 Демонстрация решения
 Задача 31: Задайте массив из 12 элементов, заполненный случайными числами из промежутка [-9, 9].
 Найдите сумму отрицательных и положительных элементов массива.
-Например, в массиве [3,9,-8,1,0,-7,2,-1,8,-3,-1,6]
+Например, в массиве [3, 9, -8, 1, 0, -7, 2, -1, 8, -3, -1, 6]
 сумма положительных чисел равна 29, сумма отрицательных равна -20.
 
 Алгоритм решения:
@@ -13,7 +13,9 @@
 5*. Сумма отрицательных и положительных через один метод
 */
 
-// Инициализируем массив
+
+// 1. Инициализируем массив
+
 int[] InitArray(int dimension)
 {
   int[] arr = new int[dimension];
@@ -26,7 +28,9 @@ int[] InitArray(int dimension)
   return arr;
 }
 
-// Печатаем массив
+
+// 2. Печатаем массив
+
 void PrintArray(int[] arr)
 {
   for (int i = 0; i < arr.Length; i++)
@@ -37,7 +41,9 @@ void PrintArray(int[] arr)
   Console.WriteLine();
 }
 
-// Находим сумму положительных в массиве
+
+// 3. Находим сумму положительных в массиве
+
 int GetPositiveSum(int[] array)
 {
   int sum = 0;
@@ -51,7 +57,9 @@ int GetPositiveSum(int[] array)
   return sum;
 }
 
-// Находим сумму отрицательных в массиве
+
+// 4. Находим сумму отрицательных в массиве
+
 int GetNegativeSum(int[] array)
 {
   int sum = 0;
@@ -65,7 +73,10 @@ int GetNegativeSum(int[] array)
   return sum;
 }
 
-(int, int) GetSummsFromArray(int[] array) // Пример кортежа.
+
+// 5*. Сумма отрицательных и положительных через один метод
+
+(int, int) GetSummsFromArray(int[] array) // Пример кортежа (тип возвращаемых данных может быть другим - double, string и т.п.)
 {
   int posSum = 0;
   int negSum = 0;
@@ -77,23 +88,27 @@ int GetNegativeSum(int[] array)
     else
       posSum += array[i];
   }
+
   return (posSum, negSum); // Будет работать ТОЛЬКО в точно такой же последовательности, как указано в кортеже.
 }
 
-MySum Temp(int[] array)
+
+MySum Temp(int[] array) // Решение через собственный класс.
 {
   MySum item = new MySum();
 
   for (int i = 0; i < array.Length; i++)
   {
     if (array[i] < 0)
-      negSum += array[i];
+      item.NegativeSum += array[i];
     else
-      posSum += array[i];
+      item.PositiveSum += array[i];
   }
-  return (posSum, negSum); // Будет работать ТОЛЬКО в точно такой же последовательности, как указано в кортеже.
+  return item;
 }
 
+
+Console.WriteLine();
 int[] array = InitArray(12);
 PrintArray(array);
 int posSum = GetPositiveSum(array);
@@ -101,10 +116,14 @@ int negSum = GetNegativeSum(array);
 
 (int pos, int neg) = GetSummsFromArray(array);
 
-Console.WriteLine($"сумма положительных = {posSum}, отрицательных = {negSum}");
-Console.WriteLine($"сумма положительных = {pos}, отрицательных = {neg}");
+MySum item = Temp(array);
 
-class MySum
+Console.WriteLine($"Сумма положительных = {posSum}, отрицательных = {negSum}");
+Console.WriteLine($"Сумма положительных = {pos}, отрицательных = {neg}");
+Console.WriteLine($"Сумма положительных = {item.PositiveSum}, отрицательных = {item.NegativeSum}");
+
+
+class MySum // Создание собственного класса для альтернативного решения.
 {
   public int PositiveSum { get; set; }
   public int NegativeSum { get; set; }

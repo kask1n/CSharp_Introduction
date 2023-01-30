@@ -31,16 +31,14 @@ bool FindNumber(int find, int[] arr)
 }
 
 Console.WriteLine();
-
 int[] array = InitArray(10);
-Console.WriteLine(string.Join(", ", array));
+Console.WriteLine($"Массив: [{string.Join(", ", array)}]");
 
 Console.WriteLine("Что будем искать?");
-
 int find = Convert.ToInt32(Console.ReadLine());
 bool a = FindNumber(find, array);
 
-if(a)
+if (a)
   Console.WriteLine("-> Да, искомый элемент найден.");
 else
   Console.WriteLine("-> Нет, искомое отсутствует.");

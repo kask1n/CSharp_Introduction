@@ -10,18 +10,19 @@
 
 int GetNumber(string message)
 {
-  Console.WriteLine(message);
   int result = 0;
 
   while (true)
   {
+    Console.WriteLine(message);
+
     if (int.TryParse(Console.ReadLine(), out result) && result > 0)
     {
       break;
     }
     else
     {
-      Console.WriteLine("Ввели не число или некорректное число. Повторите ввод!");
+      Console.WriteLine("Ввели не число или некорректное число. Повторите ввод!\n");
     }
   }
   return result;
@@ -30,6 +31,7 @@ int GetNumber(string message)
 int GetMultiple(int number)
 {
   int multiple = 1;
+
   for (int i = 1; i <= number; i++)
   {
     multiple *= i;
@@ -37,6 +39,7 @@ int GetMultiple(int number)
   return multiple;
 }
 
-int number = GetNumber("Введите число больше 0: ");
+Console.WriteLine();
+int number = GetNumber("Введите натуральное число: ");
 int resultMultiple = GetMultiple(number);
 Console.WriteLine($"Произведение чисел от 1 до {number} = {resultMultiple}");
