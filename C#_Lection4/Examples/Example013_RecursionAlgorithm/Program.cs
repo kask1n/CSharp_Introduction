@@ -96,9 +96,9 @@ Console.WriteLine();
 // Console.WriteLine();
 // PrintArray(matrix);
 
-// PrintImage(pic);
-// FillImage(13, 13);
-// PrintImage(pic);
+PrintImage(pic);
+FillImage(13, 13);
+PrintImage(pic);
 
 double Factorial(int n)
 {
@@ -124,7 +124,7 @@ int Fibonacci(int n)
   else return Fibonacci(n - 1) + Fibonacci(n - 2);
 }
 
-for (int i = 1; i < 50; i++)
-{
-  Console.WriteLine($"f({i}) = {Fibonacci(i)}");
-}
+// for (int i = 1; i < 50; i++)
+// {
+//   Console.WriteLine($"f({i}) = {Fibonacci(i)}");
+// }
