@@ -11,9 +11,9 @@ int GetIntNumber()
 
   while (true)
   {
-    Console.WriteLine("Введите целое число для подсчёта в нём количества цифр:");
+    Console.WriteLine("Введите целое число для подсчёта суммы его цифр:");
 
-    if (int.TryParse(Console.ReadLine(), out result))
+    if (int.TryParse(Console.ReadLine()!, out result))
     {
       break;
     }

@@ -13,17 +13,23 @@ string[] GetStringWithNumbersAndFillNewStringArrayAndPrint()
   Console.WriteLine();
 
   string[] numbersString = getString.Split(separators, StringSplitOptions.RemoveEmptyEntries);
-
-  foreach (string number in numbersString)
-    Console.Write($"{number}; ");
+  Console.Write("[{0}]", string.Join(", ", numbersString));
 
   return numbersString;
 }
 
 int[] ConvertToIntAndFillNewIntArray(string[] strings)
 {
-  int[] numbersInt = new int[strings.Length];
   int count = 0;
+
+  for (int i = 0; i < strings.Length; i++)
+  {
+    if (int.TryParse(strings[i], out int result))
+      count++;
+  }
+
+  int[] numbersInt = new int[count];
+  count = 0;
 
   for (int i = 0; i < strings.Length; i++)
   {
@@ -34,25 +40,23 @@ int[] ConvertToIntAndFillNewIntArray(string[] strings)
     }
   }
 
-  // Дописать команду для очистки массива от пустых значений..
   return numbersInt;
 }
 
 Console.WriteLine();
 string[] numStr = GetStringWithNumbersAndFillNewStringArrayAndPrint();
 int[] numInt = ConvertToIntAndFillNewIntArray(numStr);
-
-Console.WriteLine($"-> [{string.Join(", ", numInt)}]");
+Console.WriteLine(" -> [{0}]", string.Join(", ", numInt));
 
 
 // The example displays the following output:
 
 // Введите целые числа через запятую или пробел и нажмите Enter для создания массива:
-// -100, 0,   1234,3,-5
+// -100,0,444,5.5,asdf,ads,,,hg,2,1,3,
 
-// -100; 0; 1234; 3; -5; -> [-100, 0, 1234, 3, -5]
+// [-100, 0, 444, 5.5, asdf, ads, hg, 2, 1, 3] -> [-100, 0, 444, 2, 1, 3]
 
 // Введите целые числа через запятую или пробел и нажмите Enter для создания массива:
-// 1,0,-5
+// as dfs 1 23 4  6    af a sdf ,,,2,2,4,,2.2..2      1   -1223   1-1  -1
 
-// 1; 0; -5; -> [1, 0, -5]
+// [as, dfs, 1, 23, 4, 6, af, a, sdf, 2, 2, 4, 2.2..2, 1, -1223, 1-1, -1] -> [1, 23, 4, 6, 2, 2, 4, 1, -1223, -1]
