@@ -6,7 +6,7 @@
 
 double GetAnyNumber()
 {
-  double anyNumber = 0;
+  double anyNumber;
 
   while (true)
   {
@@ -26,7 +26,7 @@ double GetAnyNumber()
 
 int GetNaturalNumber()
 {
-  int naturalNumber = 0;
+  int naturalNumber;
 
   while (true)
   {

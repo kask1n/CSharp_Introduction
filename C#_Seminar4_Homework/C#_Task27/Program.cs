@@ -7,7 +7,7 @@
 
 int GetIntNumber()
 {
-  int result = 0;
+  int result;
 
   while (true)
   {

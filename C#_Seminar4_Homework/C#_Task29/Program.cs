@@ -21,10 +21,11 @@ string[] GetStringWithNumbersAndFillNewStringArrayAndPrint()
 int[] ConvertToIntAndFillNewIntArray(string[] strings)
 {
   int count = 0;
+  int result;
 
   for (int i = 0; i < strings.Length; i++)
   {
-    if (int.TryParse(strings[i], out int result))
+    if (int.TryParse(strings[i], out result))
       count++;
   }
 
