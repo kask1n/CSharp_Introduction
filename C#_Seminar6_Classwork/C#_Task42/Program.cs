@@ -13,9 +13,9 @@
 */
 
 Console.WriteLine();
-int x = 2;
-string z = Convert.ToString(x, 2);
-Console.WriteLine(z);
+int x = 22;
+string z = Convert.ToString(x, 2); // Преобразовать число в двоичный код.
+Console.WriteLine($"{x} -> {z}");
 
 
 int GetIntNumber()
@@ -35,9 +35,12 @@ int GetIntNumber()
       Console.WriteLine("Ввели не число или некорректное число. Повторите ввод!\n");
     }
   }
+
+  return result;
 }
 
 Console.WriteLine();
+int number = GetIntNumber();
 string number_str = "";
 
 while (number > 0)
@@ -47,4 +50,4 @@ while (number > 0)
 }
 
 string result = new string(number_str.Reverse().ToArray());
-Console.WriteLine(result);
+Console.WriteLine($"-> [{string.Join(", ", result)}]");

@@ -56,8 +56,11 @@ PrintArray(resultArray);
 int[] arrStart = Enumerable.Range(1, 9).ToArray();
 PrintArray(arrStart);
 
+Array.Reverse(arrStart);
+PrintArray(arrStart);
+
 int[] arr = Enumerable.Range(1, 9).Reverse().ToArray();
 PrintArray(arr);
 
-Array.Reverse(arr);
 arr.Reverse();
+PrintArray(arr);

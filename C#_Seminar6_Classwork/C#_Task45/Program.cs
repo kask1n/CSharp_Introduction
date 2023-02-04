@@ -29,7 +29,7 @@ int[] CopyArray(int[] startArr)
 Console.WriteLine();
 int dimension = 8;
 int[] array = InitArray(dimension);
-Console.WriteLine("Массив 1: [{0}]",string.Join(", ", array));
+Console.WriteLine("Массив 1: [{0}]", string.Join(", ", array));
 
 int[] copyArray = CopyArray(array);
-Console.WriteLine("Массив 2: [{0}]",string.Join(", ", copyArray));
+Console.WriteLine("Массив 2: [{0}]", string.Join(", ", copyArray));
