@@ -35,8 +35,21 @@ void PrintNumber(int N, int i)
   }
 }
 
+void PrintNumberBetter(int N)
+{
+  if (N > 0)
+  {
+    PrintNumberBetter(N - 1);
+    Console.Write($"{N} ");
+  }
+}
+
 Console.WriteLine();
-int numbers = GetNaturalNumber("Введите натуральное число: ");
-int i = 1;
-PrintNumber(numbers, i);
+int number = GetNaturalNumber("Введите натуральное число: ");
+
+// int i = 1;
+// PrintNumber(number, i);
+// Console.WriteLine();
+
+PrintNumberBetter(number);
 Console.WriteLine();
