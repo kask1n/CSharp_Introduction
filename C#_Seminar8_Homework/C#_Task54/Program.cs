@@ -41,7 +41,7 @@ int[,] InitAndFill2DArray(int rows, int columns)
   {
     for (int j = 0; j < columns; j++)
     {
-      matrix[i, j] = rnd.Next(-10, 10); // [-10; 10)
+      matrix[i, j] = rnd.Next(0, 10); // [0; 10)
     }
   }
 
@@ -54,30 +54,30 @@ void PrintMatrix(int[,] matrix)
   {
     for (int j = 0; j < matrix.GetLength(1); j++)
     {
-      Console.Write($"{matrix[i, j],7}");
+      Console.Write($"{matrix[i, j],5}");
     }
     Console.WriteLine();
   }
 }
 
-void FindAndPrintMeanOfEachColumn(int[,] matrix)
+void SelectionSortReverse(int[,] array)
 {
-  Console.WriteLine("Среднее арифметическое элементов в каждом столбце:");
-
-  for (int j = 0; j < matrix.GetLength(1); j++)
+  for (int row = 0; row < array.GetLength(0); row++)
   {
-    var sum = 0;
-
-    for (int i = 0; i < matrix.GetLength(0); i++)
+    for (int i = 0; i < array.GetLength(1) - 1; i++)
     {
-      sum = sum + matrix[i, j];
+      int maxPosition = i;
+
+      for (int j = i + 1; j < array.GetLength(1); j++)
+      {
+        if (array[row, j] > array[row, maxPosition]) maxPosition = j;
+      }
+
+      int temporary = array[row, i];
+      array[row, i] = array[row, maxPosition];
+      array[row, maxPosition] = temporary;
     }
-
-    var mean = (double)sum / matrix.GetLength(0);
-    Console.Write("{0,7:f1}", mean);
   }
-
-  Console.WriteLine();
 }
 
 Console.WriteLine();
@@ -87,9 +87,29 @@ int[,] matrix = InitAndFill2DArray(countOfRows, countOfColumns);
 
 Console.WriteLine();
 PrintMatrix(matrix);
-
 Console.WriteLine();
-FindAndPrintMeanOfEachColumn(matrix);
+
+SelectionSortReverse(matrix);
+
+Console.WriteLine($"->\n");
+PrintMatrix(matrix);
 
 
 // The example displays the following output:
+
+// Введите количество строк: 5
+// Введите количество столбцов: 5
+
+//     6    2    5    3    0
+//     8    1    5    9    5
+//     9    9    6    1    2
+//     0    3    8    0    4
+//     0    8    6    8    7
+
+// ->
+
+//     6    5    3    2    0
+//     9    8    5    5    1
+//     9    9    6    2    1
+//     8    4    3    0    0
+//     8    8    7    6    0

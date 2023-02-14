@@ -38,7 +38,7 @@ int[,] InitAndFill2DArray(int rows, int columns)
   {
     for (int j = 0; j < columns; j++)
     {
-      matrix[i, j] = rnd.Next(-10, 10); // [-10; 10)
+      matrix[i, j] = rnd.Next(0, 2); // [0; 2)
     }
   }
 
@@ -51,42 +51,174 @@ void PrintMatrix(int[,] matrix)
   {
     for (int j = 0; j < matrix.GetLength(1); j++)
     {
-      Console.Write($"{matrix[i, j],7}");
+      Console.Write($"{matrix[i, j],5}");
     }
     Console.WriteLine();
   }
 }
 
-void FindAndPrintMeanOfEachColumn(int[,] matrix)
+void MultiplyMatrixAndPrint(int[,] A, int[,] B)
 {
-  Console.WriteLine("Среднее арифметическое элементов в каждом столбце:");
+  int rA = A.GetLength(0);
+  int cA = A.GetLength(1);
+  int rB = B.GetLength(0);
+  int cB = B.GetLength(1);
 
-  for (int j = 0; j < matrix.GetLength(1); j++)
+  if (cA == rB)
   {
-    var sum = 0;
+    Console.WriteLine("A * B. -> Результат умножения матриц:\n");
+    int temp;
+    int[,] multiply = new int[rA, cB];
 
-    for (int i = 0; i < matrix.GetLength(0); i++)
+    for (int i = 0; i < rA; i++)
     {
-      sum = sum + matrix[i, j];
+      for (int j = 0; j < cB; j++)
+      {
+        temp = 0;
+
+        for (int k = 0; k < cA; k++)
+        {
+          temp += A[i, k] * B[k, j];
+        }
+
+        multiply[i, j] = temp;
+      }
     }
 
-    var mean = (double)sum / matrix.GetLength(0);
-    Console.Write("{0,7:f1}", mean);
+    for (int i = 0; i < multiply.GetLength(0); i++)
+    {
+      for (int j = 0; j < multiply.GetLength(1); j++)
+      {
+        Console.Write($"{multiply[i, j],5}");
+      }
+      Console.WriteLine();
+    }
   }
 
-  Console.WriteLine();
+  else if (cB == rA)
+  {
+    Console.WriteLine("Умножение матриц возможно только с перестановкой, т.е. B * A." +
+                      " -> Результат умножения матриц:\n");
+    int temp;
+    int[,] multiply = new int[rB, cA];
+
+    for (int i = 0; i < rB; i++)
+    {
+      for (int j = 0; j < cA; j++)
+      {
+        temp = 0;
+
+        for (int k = 0; k < cB; k++)
+        {
+          temp += B[i, k] * A[k, j];
+        }
+
+        multiply[i, j] = temp;
+      }
+    }
+
+    for (int i = 0; i < multiply.GetLength(0); i++)
+    {
+      for (int j = 0; j < multiply.GetLength(1); j++)
+      {
+        Console.Write($"{multiply[i, j],5}");
+      }
+      Console.WriteLine();
+    }
+  }
+
+  else
+  {
+    Console.WriteLine("-> Матрицы несовместимы и не могут быть перемножены!");
+  }
 }
 
 Console.WriteLine();
-int countOfRows = GetNaturalNumber("Введите количество строк: ");
-int countOfColumns = GetNaturalNumber("Введите количество столбцов: ");
-int[,] matrix = InitAndFill2DArray(countOfRows, countOfColumns);
+int countOfRows = GetNaturalNumber("Введите количество строк матрицы A: ");
+int countOfColumns = GetNaturalNumber("Введите количество столбцов матрицы A: ");
+int[,] matrix1 = InitAndFill2DArray(countOfRows, countOfColumns);
+
+countOfRows = GetNaturalNumber("Введите количество строк матрицы B: ");
+countOfColumns = GetNaturalNumber("Введите количество столбцов матрицы B: ");
+int[,] matrix2 = InitAndFill2DArray(countOfRows, countOfColumns);
 
 Console.WriteLine();
-PrintMatrix(matrix);
+Console.WriteLine("Дано две матрицы.");
 
+Console.WriteLine("Матрица A:\n");
+PrintMatrix(matrix1);
 Console.WriteLine();
-FindAndPrintMeanOfEachColumn(matrix);
+
+Console.WriteLine("Матрица B:\n");
+PrintMatrix(matrix2);
+Console.WriteLine();
+
+MultiplyMatrixAndPrint(matrix1, matrix2);
 
 
 // The example displays the following output:
+
+// Введите количество строк матрицы A: 1
+// Введите количество столбцов матрицы A: 2
+// Введите количество строк матрицы B: 3
+// Введите количество столбцов матрицы B: 4
+
+// Дано две матрицы.
+// Матрица A:
+
+//     0    0
+
+// Матрица B:
+
+//     1    0    0    1
+//     0    0    0    1
+//     1    1    1    1
+
+// -> Матрицы несовместимы и не могут быть перемножены!
+
+// ----------------------------------------------------
+
+// Введите количество строк матрицы A: 1
+// Введите количество столбцов матрицы A: 2
+// Введите количество строк матрицы B: 3
+// Введите количество столбцов матрицы B: 1
+
+// Дано две матрицы.
+// Матрица A:
+
+//     0    1
+
+// Матрица B:
+
+//     0
+//     0
+//     1
+
+// Умножение матриц возможно только с перестановкой, т.е. B * A. -> Результат умножения матриц:
+
+//     0    0
+//     0    0
+//     0    1
+
+// ----------------------------------------------------
+
+// Введите количество строк матрицы A: 2
+// Введите количество столбцов матрицы A: 2
+// Введите количество строк матрицы B: 2
+// Введите количество столбцов матрицы B: 2
+
+// Дано две матрицы.
+// Матрица A:
+
+//     0    0
+//     0    1
+
+// Матрица B:
+
+//     1    1
+//     1    1
+
+// A * B. -> Результат умножения матриц:
+
+//     0    0
+//     1    1
