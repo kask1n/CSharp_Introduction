@@ -9,13 +9,18 @@
 
 int[,] matrix = new int[4, 4];
 
-void SnakeFillMatrix(int row, int col, int count) // TODO: Скорректировать метод с приоритетом на движение вперёд.
+void SnakeFillMatrix(int row, int col, int count)
 {
   if (col < matrix.GetLength(1) && row < matrix.GetLength(0) && col >= 0 && row >= 0 && matrix[row, col] == 0)
   {
-
     matrix[row, col] = count;
     count++;
+
+    if (col > 0 && matrix[row, col] - matrix[row, col - 1] == 1) SnakeFillMatrix(row, col + 1, count);
+    if (row > 0 && matrix[row, col] - matrix[row - 1, col] == 1) SnakeFillMatrix(row + 1, col, count);
+    if (col < matrix.GetLength(1) - 1 && matrix[row, col] - matrix[row, col + 1] == 1) SnakeFillMatrix(row, col - 1, count);
+    if (row < matrix.GetLength(0) - 1 && matrix[row, col] - matrix[row + 1, col] == 1) SnakeFillMatrix(row - 1, col, count);
+
     SnakeFillMatrix(row, col + 1, count);
     SnakeFillMatrix(row + 1, col, count);
     SnakeFillMatrix(row, col - 1, count);

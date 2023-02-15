@@ -40,21 +40,32 @@ int[,,] InitAndFill3DArrayWithUniqueValues(int rows, int columns, int layers, in
   {
     for (int j = 0; j < columns; j++)
     {
-      for (int k = 0; k < layers; k++)
+      int k = 0; // Заполнение массива через цикл while без использования декремента (k--).
+
+      while (k < layers)
       {
         temp = rnd.Next(rndMin, rndMax);
 
-        if (uniqueValues.ContainsKey(temp))
-        {
-          k--;
-          continue;
-        }
-        else
+        if (!uniqueValues.ContainsKey(temp))
         {
           uniqueValues.Add(temp, true);
           matrix[i, j, k] = temp;
+          k++;
         }
       }
+
+      // for (int k = 0; k < layers; k++) // Заполнение массива через цикл for с использованием
+      //                                  // декремента (k--) - не самый лучший вариант.
+      // {
+      //   temp = rnd.Next(rndMin, rndMax);
+
+      //   if (!uniqueValues.ContainsKey(temp))
+      //   {
+      //     uniqueValues.Add(temp, true);
+      //     matrix[i, j, k] = temp;
+      //   }
+      //   else k--;
+      // }
     }
   }
 
@@ -85,7 +96,7 @@ int countOfColumns = GetNaturalNumber("Введите количество ст�
 int countOfLayers = GetNaturalNumber("Введите количество слоёв: ");
 
 int rndMin = 10;
-int rndMax = 100; // Аргументы для Random.Next[rndMin; rndMax) - все двузначные числа.
+int rndMax = 100; // Аргументы для Random.Next[rndMin; rndMax) - все двухзначные числа.
 
 if (rndMax - rndMin < countOfRows * countOfColumns * countOfLayers) // Проверка выполнимости метода.
 {
