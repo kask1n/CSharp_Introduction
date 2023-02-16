@@ -7,13 +7,13 @@ N = 8 -> "8, 7, 6, 5, 4, 3, 2, 1"
 
 int GetNaturalNumber(string message)
 {
-  int result = 0;
+  int result;
 
   while (true)
   {
     Console.Write(message);
 
-    if (int.TryParse(Console.ReadLine(), out result) && result > 0)
+    if (int.TryParse(Console.ReadLine()!, out result) && result > 0)
     {
       break;
     }
@@ -26,18 +26,33 @@ int GetNaturalNumber(string message)
   return result;
 }
 
-void PrintNumber(int N, int i)
+void PrintNumberRec(int N)
 {
-  if (i <= N)
+  if (N > 1)
   {
-    Console.Write($"{i} ");
-    i++;
-    PrintNumber(N, i);
+    Console.Write($"{N}, ");
+    PrintNumberRec(N - 1);
+  }
+
+  if (N == 1)
+  {
+    Console.Write($"{N}");
+    PrintNumberRec(N - 1);
   }
 }
 
 Console.WriteLine();
-int numbers = GetNaturalNumber("Введите натуральное число: ");
-int i = 1;
-PrintNumber(numbers, i);
+int number = GetNaturalNumber("Введите натуральное число N: ");
 Console.WriteLine();
+
+Console.Write("Все натуральные числа от N до 1:\n-> ");
+PrintNumberRec(number);
+Console.WriteLine();
+
+
+// The example displays the following output:
+
+// Введите натуральное число N: 7
+
+// Все натуральные числа от N до 1:
+// -> 7, 6, 5, 4, 3, 2, 1

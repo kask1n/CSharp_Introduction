@@ -7,13 +7,13 @@ M = 4; N = 8. -> 30
 
 int GetNaturalNumber(string message)
 {
-  int result = 0;
+  int result;
 
   while (true)
   {
     Console.Write(message);
 
-    if (int.TryParse(Console.ReadLine(), out result) && result > 0)
+    if (int.TryParse(Console.ReadLine()!, out result) && result > 0)
     {
       break;
     }
@@ -26,17 +26,38 @@ int GetNaturalNumber(string message)
   return result;
 }
 
-string PrintNumber(int m, int n)
+int SumNaturalNumbersRec(int m, int n) // [m, n]
 {
-  if (m < n)
-    return $"{m}, " + PrintNumber(m + 1, n);
-  else
-    return String.Empty;
+  if (m < n) return m + SumNaturalNumbersRec(++m, n);
+  if (m > n) return m + SumNaturalNumbersRec(--m, n);
+  else return m;
 }
 
 Console.WriteLine();
 int numberM = GetNaturalNumber("Введите натуральное число M: ");
 int numberN = GetNaturalNumber("Введите натуральное число N: ");
-Console.WriteLine();
 
-Console.WriteLine($"-> " + PrintNumber(numberM, numberN) + numberN);
+Console.Write("\n-> Сумма всех натуральных чисел в промежутке [M, N] = " +
+             $"{SumNaturalNumbersRec(numberM, numberN)}\n");
+
+
+// The example displays the following output:
+
+// Введите натуральное число M: 1
+// Введите натуральное число N: 5
+
+// -> Сумма всех натуральных чисел в промежутке [M, N] = 15
+
+// --------------------------------------------------------
+
+// Введите натуральное число M: 5
+// Введите натуральное число N: 1
+
+// -> Сумма всех натуральных чисел в промежутке [M, N] = 15
+
+// --------------------------------------------------------
+
+// Введите натуральное число M: 5
+// Введите натуральное число N: 5
+
+// -> Сумма всех натуральных чисел в промежутке [M, N] = 5
